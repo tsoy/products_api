@@ -1,0 +1,14 @@
+server {
+    listen       80;
+    server_name  monitoring.dev;
+    root       /var/www/monitoring.dev/public/;
+ 
+    access_log  /usr/local/etc/nginx/logs/laravel.dev.access.log  main;
+ 
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+     location ~ \.php$ {
+        include   /usr/local/etc/nginx/conf.d/php-fpm;
+    }
+}
